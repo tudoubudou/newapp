@@ -8,11 +8,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.alibaba.fastjson.JSON;
 import com.example.michael.mybmobapp.model.Person;
 
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobQuery;
@@ -20,12 +23,13 @@ import cn.bmob.v3.listener.FindCallback;
 import cn.bmob.v3.listener.SaveListener;
 
 public class MainActivity extends AppCompatActivity {
-
+    TextView textView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        textView = (TextView)findViewById(R.id.text);
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -86,7 +90,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onSuccess(JSONArray arg0) {
                 //注意：查询的结果是JSONArray,需要自行解析
-                showToast("查询成功:"+arg0.length());
+                showToast("查询成功:" + arg0.length());
+                textView.setText(arg0.toString());
+                for (int i = 0; i < arg0.length(); i++) {
+
+                    Person p = JSON.parseObject(arg0.optString(i), Person.class);
+                    showToast(p.toString());
+                }
             }
 
             @Override
