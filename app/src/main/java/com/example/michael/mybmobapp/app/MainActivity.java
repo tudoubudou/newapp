@@ -1,4 +1,4 @@
-package com.example.michael.mybmobapp;
+package com.example.michael.mybmobapp.app;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -12,17 +12,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
+import com.example.michael.mybmobapp.R;
 import com.example.michael.mybmobapp.model.Person;
 
 import org.json.JSONArray;
-import org.json.JSONObject;
 
 import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.listener.FindCallback;
 import cn.bmob.v3.listener.SaveListener;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
     TextView textView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Bmob.initialize(this, "14fc2142c3fa7d48d597f565a3540aaf");
 
     }
 
@@ -101,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(int arg0, String arg1) {
-                showToast("查询失败:"+arg1 + " errorcode=" + arg0);
+                showToast("查询失败:" + arg1 + " errorcode=" + arg0);
             }
         });
     }

@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">MyBmobApp</string>
+    <string name="submit">登录</string>
+    <string name="register">注册</string>
+    <string name="skip">跳过</string>
+    <string name="submit_hint_name">请输入用户名</string>
+    <string name="submit_hint_pwd">请输入密码</string>
+    <string name="submit_hint_email">请输入邮箱</string>
     <string name="action_settings">Settings</string>
 </resources>
